@@ -1,16 +1,14 @@
 ---
-const { header = "test mig" } = Astro.props;
-
 const { data } = Astro.props;
 console.log(data);
 ---
 
 <article>
-  <h2>{header}</h2>
-  <img src="https://via.placeholder.com/300" alt="Placeholder Image" />
-  <div class="card-content">
+  <h2>{data.where}</h2>
+  <img src={data.img} alt="Placeholder Image" />
+  <!-- <div class="card-content">
     <a href="#" class="btn">Læs mere</a>
-  </div>
+  </div> -->
 </article>
 <style>
   article {
