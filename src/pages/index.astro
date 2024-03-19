@@ -33,16 +33,19 @@ console.log(data);
     <title>FORSIDE</title>
   </head>
   <body>
-    {
-      data.map((show) => {
-        return <Card data />;
-      })
-    }
-
     <Header />
-    <Carousel />
+    <main>
+      <section class="cards">
+        {
+          data.map((cards) => {
+            return <Card data />;
+          })
+        }
+      </section>
 
-    <Scrolldownarrow />
+      <Scrolldownarrow />
+    </main>
+
     <Footer />
   </body>
 </html>
