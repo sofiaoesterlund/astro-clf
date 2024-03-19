@@ -11,7 +11,7 @@
         <p>Program 2024</p>
         <p>Festival Map 2024</p>
         <p>Tidligere programmer</p>
-        <p>NEWSLETTER SIGN-UP</p>
+        <p style="font-weight: bold;">NEWSLETTER SIGN-UP</p>
       </div>
     </div>
 
@@ -33,7 +33,9 @@
       <p>Hotel/restaurent</p>
       <div class="flex4">
         <img src="src/Skærmbillede 2024-03-19 kl. 13.06.34.png" alt="" />
+
         <img src="src/Skærmbillede 2024-03-19 kl. 13.06.49.png" alt="" />
+
         <img src="src/Skærmbillede 2024-03-19 kl. 13.06.59.png" alt="" />
       </div>
     </div>
@@ -45,10 +47,11 @@
 
 <style>
   footer {
-    background-color: rgb(39, 35, 35);
+    background-color: rgba(21, 20, 20, 0.4);
     color: aliceblue;
     display: grid;
     align-items: center;
+    padding: 50px; /* Tilføj den ønskede mængde padding */
   }
 
   .grid_3-2 {
@@ -78,5 +81,17 @@
     height: 100%;
     padding: 1em;
     object-fit: fill;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .grid_3-2 {
+      grid-template-columns: 1fr; /* Ændrer til en enkelt kolonne layout */
+    }
+    .flex1,
+    .flex2,
+    .flex3,
+    .flex4 {
+      margin: 10px; /* Tilføj den ønskede mængde mellemrum */
+    }
   }
 </style>
