@@ -2,14 +2,35 @@
 const link_1 = Astro.props.home;
 const link_2 = Astro.props.catalog;
 const link_3 = Astro.props.burger;
+
+import Popup from "./Popup.astro";
 ---
 
 <nav>
   <img src="./public/logo.png" alt="logo" />
   <a href={link_1}>Home</a>
   <a href={link_2}>Catalog</a>
-  <a href="#">Dansk/English</a>
+  <div>
+    <h2>DA/EN</h2>
+    <label class="switch">
+      <input type="checkbox" />
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <!-- Trigger/Open The Modal -->
+  <button id="myBtn">Newsletter</button>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <Popup />
+    </div>
+  </div>
   <a href=""></a>
+
   <!-- hamburger -->
   <input type="checkbox" id="navi-toggle" class="checkbox" />
   <label for="navi-toggle" class="button">
@@ -27,170 +48,296 @@ const link_3 = Astro.props.burger;
       <li class="item"><a class="link"> FAQ </a></li>
     </ul>
   </nav>
-
-  <style>
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-left: 2%;
-      margin-right: 2%;
-    }
-    img {
-      width: 10%;
-    }
-
-    a {
-      font-family: "Courier New", Courier, monospace;
-      cursor: pointer;
-      margin: 0;
-    }
-
-    /* hamburger */
-    .checkbox {
-      display: none;
-    }
-
-    .button {
-      position: relative;
-      background-color: white;
-      height: 5rem;
-      width: 5rem;
-      border-radius: 50%;
-      position: fixed;
-      top: 5vh;
-      right: 5vw;
-      z-index: 2000;
-      box-shadow: 0 1rem 3rem black;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .background {
-      height: 4rem;
-      width: 4rem;
-      border-radius: 50%;
-      position: fixed;
-      top: 5.5vh;
-      right: 5.5vw;
-      background-image: radial-gradient(rgb(34, 0, 128), black);
-      z-index: 1000;
-
-      transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
-    }
-
-    .nav {
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      right: -60vw;
-      z-index: 1500;
-      opacity: 0;
-      width: 0;
-      transition: all 0.8s;
-    }
-
-    .list {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      list-style: none;
-      text-align: center;
-      width: 100%;
-    }
-
-    .item {
-      margin: 1rem;
-      font-size: 36px;
-    }
-
-    .link:link,
-    .link:visited {
-      display: inline-block;
-      font-size: 3rem;
-      font-weight: 300;
-      padding: 1rem 2rem;
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      background-image: linear-gradient(
-        120deg,
-        transparent 0%,
-        transparent 50%,
-        white 50%
-      );
-      background-size: 220%;
-      transition: all 0.4s;
-    }
-
-    .link:hover,
-    .link:active {
-      color: rgb(255, 255, 255);
-      cursor: pointer;
-    }
-
-    /* functionality */
-    .checkbox:checked ~ .background {
-      transform: scale(80);
-    }
-    .checkbox:checked ~ .nav {
-      opacity: 1;
-      width: 100%;
-      right: 0;
-    }
-
-    /*  */
-    /* styling hamb ICON */
-    .icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .icon,
-    .icon::before,
-    .icon::after {
-      width: 3rem;
-      height: 2px;
-      background-color: gray;
-      display: inline-block;
-    }
-
-    .icon::before,
-    .icon::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      transition: all 0.2s;
-    }
-
-    .icon::before {
-      top: -0.8rem;
-    }
-    .icon::after {
-      top: 0.8rem;
-    }
-
-    .button:hover icon:before {
-      top: -1rem;
-    }
-    .button:hover icon::after {
-      top: 1rem;
-    }
-
-    .checkbox:checked + .button .icon {
-      background-color: transparent;
-    }
-
-    .checkbox:checked + .button .icon::before {
-      top: 0;
-      transform: rotate(135deg);
-    }
-    .checkbox:checked + .button .icon::after {
-      top: 0;
-      transform: rotate(-135deg);
-    }
-  </style>
 </nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  img {
+    width: 10%;
+  }
+
+  a {
+    font-family: "Courier New", Courier, monospace;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196f3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* hamburger */
+  .checkbox {
+    display: none;
+  }
+
+  .button {
+    position: relative;
+    background-color: white;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 5vh;
+    right: 5vw;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem black;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .background {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 5.5vh;
+    right: 5.5vw;
+    background-image: radial-gradient(rgb(34, 0, 128), black);
+    z-index: 1000;
+
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  .nav {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -60vw;
+    z-index: 1500;
+    opacity: 0;
+    width: 0;
+    transition: all 0.8s;
+  }
+
+  .list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  .item {
+    margin: 1rem;
+    font-size: 36px;
+  }
+
+  .link:link,
+  .link:visited {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 300;
+    padding: 1rem 2rem;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 50%,
+      white 50%
+    );
+    background-size: 220%;
+    transition: all 0.4s;
+  }
+
+  .link:hover,
+  .link:active {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+
+  /* functionality */
+  .checkbox:checked ~ .background {
+    transform: scale(80);
+  }
+  .checkbox:checked ~ .nav {
+    opacity: 1;
+    width: 100%;
+    right: 0;
+  }
+
+  /*  */
+  /* styling hamb ICON */
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .icon,
+  .icon::before,
+  .icon::after {
+    width: 3rem;
+    height: 2px;
+    background-color: gray;
+    display: inline-block;
+  }
+
+  .icon::before,
+  .icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all 0.2s;
+  }
+
+  .icon::before {
+    top: -0.8rem;
+  }
+  .icon::after {
+    top: 0.8rem;
+  }
+
+  .button:hover icon:before {
+    top: -1rem;
+  }
+  .button:hover icon::after {
+    top: 1rem;
+  }
+
+  .checkbox:checked + .button .icon {
+    background-color: transparent;
+  }
+
+  .checkbox:checked + .button .icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+  .checkbox:checked + .button .icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on the button, open the modal
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
