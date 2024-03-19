@@ -1,0 +1,47 @@
+---
+const { header = "test mig" } = Astro.props;
+---
+
+<article>
+  <h2>{header}</h2>
+  <img src="https://via.placeholder.com/300" alt="Placeholder Image" />
+  <div class="card-content">
+    <a href="#" class="btn">Læs mere</a>
+  </div>
+</article>
+<style>
+  article {
+    max-width: 300px;
+    background-color: rgba(26, 24, 24, 0.66);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+  h2 {
+    color: #dfdbdb;
+    text-align: center;
+  }
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    padding: 20px 20px;
+    background-color: rgba(47, 0, 142, 1);
+    color: #dfdbdb;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: rgba(16, 8, 68, 0.47);
+  }
+</style>

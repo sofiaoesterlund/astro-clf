@@ -1,0 +1,53 @@
+---
+import Card from "./Card.astro";
+---
+
+<div class="peephole">
+  <div class="row">
+    <div class="slide">
+      <Card header="a" />
+      <Card />
+      <Card header="b" />
+    </div>
+    <div class="slide">
+      <Card />
+      <Card header="c" />
+      <Card />
+    </div>
+    <div class="slide">
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  </div>
+</div>
+<button class="left">&lt;&lt;</button>
+<button class="right">&gt;&gt;</button>
+
+<style>
+  .peephole {
+    width: 900px;
+    overflow: hidden;
+    height: 500px;
+    display: flex;
+  }
+  .row {
+    width: 9000px;
+    display: flex;
+    transition: all 1s;
+  }
+  .slide {
+    width: 900px;
+    display: flex;
+    gap: 1rem;
+  }
+</style>
+
+<script>
+  const left = document.querySelector("button.left");
+  const row = document.querySelector(".row");
+
+  left.addEventListener("click", () => {
+    row.style.transform = `translateX(-900px)`;
+  });
+</script>
