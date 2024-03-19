@@ -30,6 +30,7 @@ import Card from "./Card.astro";
     overflow: hidden;
     height: 500px;
     display: flex;
+    margin: auto;
   }
   .row {
     width: 9000px;
@@ -41,11 +42,15 @@ import Card from "./Card.astro";
     display: flex;
     gap: 1rem;
   }
+
+  button {
+    margin: auto;
+  }
 </style>
 
 <script>
   const left = document.querySelector("button.left");
-  const row = document.querySelector(".row");
+  const row = document.querySelector(".row") as HTMLDivElement;
 
   left.addEventListener("click", () => {
     row.style.transform = `translateX(-900px)`;
