@@ -11,10 +11,9 @@ import Popup from "./Popup.astro";
   <a href={link_1}>Home</a>
   <a href={link_2}>Catalog</a>
   <div>
-    <h2>DA/EN</h2>
     <label class="switch">
       <input type="checkbox" />
-      <span class="slider round"></span>
+      <span class="slider round"><p>DA/EN</p></span>
     </label>
   </div>
 
@@ -51,6 +50,13 @@ import Popup from "./Popup.astro";
 </nav>
 
 <style>
+  p {
+    margin-top: 60%;
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+  }
+
   nav {
     display: flex;
     justify-content: space-between;
@@ -88,6 +94,7 @@ import Popup from "./Popup.astro";
     left: 0;
     right: 0;
     bottom: 0;
+
     background-color: #ccc;
     -webkit-transition: 0.4s;
     transition: 0.4s;
@@ -310,6 +317,15 @@ import Popup from "./Popup.astro";
   .close:focus {
     color: black;
     text-decoration: none;
+    cursor: pointer;
+  }
+
+  #myBtn {
+    border-radius: 40px;
+    background-color: #ffffff;
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    padding: 10px;
     cursor: pointer;
   }
 </style>
