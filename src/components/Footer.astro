@@ -1,0 +1,97 @@
+---
+
+---
+
+<footer>
+  <div class="grid_3-2">
+    <div class="flex1">
+      <div class="inner">
+        <h2>PROGRAM</h2>
+
+        <p>Program 2024</p>
+        <p>Festival Map 2024</p>
+        <p>Tidligere programmer</p>
+        <p style="font-weight: bold;">NEWSLETTER SIGN-UP</p>
+      </div>
+    </div>
+
+    <div class="flex2">
+      <h2>INFORMATION</h2>
+      <p>Presse & medier</p>
+      <p>Photo Competiotion 2024</p>
+      <p>FAQ</p>
+      <p>For kunstnere</p>
+      <p>Bliv vært for et lysværk</p>
+      <p>Permanente installationer</p>
+      <p>Udforsk København</p>
+    </div>
+
+    <div class="flex3">
+      <h2>BOOK</h2>
+      <p>Guidede ture 2024</p>
+      <p>Events 2024</p>
+      <p>Hotel/restaurent</p>
+      <div class="flex4">
+        <img src="src/Skærmbillede 2024-03-19 kl. 13.06.34.png" alt="" />
+
+        <img src="src/Skærmbillede 2024-03-19 kl. 13.06.49.png" alt="" />
+
+        <img src="src/Skærmbillede 2024-03-19 kl. 13.06.59.png" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="flex4">
+    <p>© Copenhagen Light Festival</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: rgba(21, 20, 20, 0.4);
+    color: aliceblue;
+    display: grid;
+    align-items: center;
+    padding: 50px; /* Tilføj den ønskede mængde padding */
+  }
+
+  .grid_3-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    gap: 2rem;
+  }
+  .grid_3-2 > * {
+  }
+  .inner {
+    margin: auto;
+  }
+  .flex4 {
+    display: flex;
+  }
+  /*
+  .flex1, .flex2, .flex3, .flex4 {
+  margin: 50px; 
+} */
+
+  img {
+    display: block;
+    min-width: 30px;
+    max-width: 50px;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    object-fit: fill;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .grid_3-2 {
+      grid-template-columns: 1fr; /* Ændrer til en enkelt kolonne layout */
+    }
+    .flex1,
+    .flex2,
+    .flex3,
+    .flex4 {
+      margin: 10px; /* Tilføj den ønskede mængde mellemrum */
+    }
+  }
+</style>
