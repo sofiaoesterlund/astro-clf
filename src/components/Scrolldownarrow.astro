@@ -1,10 +1,18 @@
 ---
-const {text} = Astro.props;
+const text = Astro.props;
 ---
 
-<button>
-    <i class="fa-solid fa-angle-down" style="color: #ffffff;"></i>
-</button>
+
+<img src="src/forsidebilledeny.webp" alt="forsidebillede" >
+
+
+ <a href="#scrollto" class="scroll-down-link">
+    <button class="scroll-down-arrow">
+        <i class="fa-solid fa-angle-down" style="color: #ffffff;"></i>
+    </button>
+ </a>
+
+
 
 <style>
      button{
@@ -13,4 +21,33 @@ const {text} = Astro.props;
        font-size: 5rem;
        color: white;
     }
+
+    img{
+        width: auto;
+        max-height: 50%;
+        object-fit: cover;
+        padding-bottom: 7%;
+    }
+
+    .scroll-down-arrow {
+  position: absolute;
+  bottom: 0%;
+  left: 47%;
+  color: #633e23;
+  transform: translateX(-50%);
+  animation: moveUpDown 1.5s infinite;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
 </style>
