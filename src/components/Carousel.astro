@@ -1,8 +1,9 @@
 ---
-import Card from "./Card.astro";
+import Card from "../components/Card.astro";
+
 const title = Astro.props.title;
 const imgurl = Astro.props.imgurl;
-const linkurl = Astro.props.linkurl;
+const where = Astro.props.where;
 
 const { data } = Astro.props;
 console.log(data);
@@ -11,54 +12,44 @@ console.log(data);
 <div class="peephole">
   <div class="row">
     <div class="slide">
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-    </div>
-    <div class="slide">
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-    </div>
-    <div class="slide">
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
-      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card data title={title} imgurl={imgurl} where={where} />
+      <Card data title={title} imgurl={imgurl} where={where} />
+      <Card data title={title} imgurl={imgurl} where={where} />
     </div>
   </div>
+  <button class="left">&lt;&lt;</button>
+  <button class="right">&gt;&gt;</button>
+
+  <style>
+    .peephole {
+      width: 900px;
+      overflow: hidden;
+      height: 500px;
+      display: flex;
+      margin: auto;
+    }
+    .row {
+      width: 9000px;
+      display: flex;
+      transition: all 1s;
+    }
+    .slide {
+      width: 900px;
+      display: flex;
+      gap: 1rem;
+    }
+
+    button {
+      margin: auto;
+    }
+  </style>
+
+  <script>
+    const left = document.querySelector("button.left");
+    const row = document.querySelector(".row") as HTMLDivElement;
+
+    left.addEventListener("click", () => {
+      row.style.transform = `translateX(-900px)`;
+    });
+  </script>
 </div>
-<button class="left">&lt;&lt;</button>
-<button class="right">&gt;&gt;</button>
-
-<style>
-  .peephole {
-    width: 900px;
-    overflow: hidden;
-    height: 500px;
-    display: flex;
-    margin: auto;
-  }
-  .row {
-    width: 9000px;
-    display: flex;
-    transition: all 1s;
-  }
-  .slide {
-    width: 900px;
-    display: flex;
-    gap: 1rem;
-  }
-
-  button {
-    margin: auto;
-  }
-</style>
-
-<script>
-  const left = document.querySelector("button.left");
-  const row = document.querySelector(".row") as HTMLDivElement;
-
-  left.addEventListener("click", () => {
-    row.style.transform = `translateX(-900px)`;
-  });
-</script>
