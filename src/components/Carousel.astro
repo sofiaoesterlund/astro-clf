@@ -1,5 +1,9 @@
 ---
 import Card from "./Card.astro";
+const title = Astro.props.title;
+const imgurl = Astro.props.imgurl;
+const linkurl = Astro.props.linkurl;
+
 const { data } = Astro.props;
 console.log(data);
 ---
@@ -7,19 +11,19 @@ console.log(data);
 <div class="peephole">
   <div class="row">
     <div class="slide">
-      <Card header="a" />
-      <Card />
-      <Card header="b" />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
     </div>
     <div class="slide">
-      <Card />
-      <Card header="c" />
-      <Card />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
     </div>
     <div class="slide">
-      <Card />
-      <Card />
-      <Card />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
+      <Card title={title} imgurl={imgurl} linkurl={linkurl} />
     </div>
   </div>
 </div>

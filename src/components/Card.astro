@@ -1,13 +1,18 @@
 ---
+const title = Astro.props.title;
+const imgurl = Astro.props.imgurl;
+const linkurl = Astro.props.linkurl;
+const where = Astro.props.where;
+
 const { data } = Astro.props;
 console.log(data);
 ---
 
 <article>
-  <h2>{data.id}</h2>
-  <img src={data.img} alt="Placeholder Image" />
+  <h2>{title}</h2>
+  <img src={imgurl} alt="Placeholder Image" />
   <div class="card-content">
-    <a href="#" class="btn">Læs mere</a>
+    <a href={linkurl} class="btn">{where}</a>
   </div>
 </article>
 <style>
@@ -46,7 +51,3 @@ console.log(data);
     background-color: rgba(16, 8, 68, 0.47);
   }
 </style>
-
-<script>
-  fetch;
-</script>

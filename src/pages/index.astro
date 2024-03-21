@@ -6,6 +6,7 @@ import Card from "../components/Card.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Carousel from "../components/Carousel.astro";
+import Layout from "../layouts/layout.astro";
 
 const data = await fetch(
   "https://yfascmnvoajeushbqoma.supabase.co/rest/v1/clf_superbase",
@@ -17,35 +18,23 @@ const data = await fetch(
     },
   }
 ).then((res) => res.json());
-
 console.log(data);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <script
-      src="https://kit.fontawesome.com/42ae7bc1ec.js"
-      crossorigin="anonymous"></script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>FORSIDE</title>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section class="cards">
-        {
-          data.map((cards) => {
-            return <Card data />;
-          })
-        }
-      </section>
-
-      <Scrolldownarrow />
-    </main>
-
-    <Footer />
-  </body>
-</html>
+<Layout>
+  <Carousel class="cards">
+    {
+      data.map((cards) => {
+        return (
+          <Card
+            data
+            title={cards.name}
+            imgurl={cards.img}
+            linkurl={cards.linkurl}
+            where={cards.where}
+          />
+        );
+      })
+    }
+  </Carousel>
+</Layout>

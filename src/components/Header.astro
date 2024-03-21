@@ -8,8 +8,8 @@ import Popup from "./Popup.astro";
 
 <nav>
   <img src="./public/logo.png" alt="logo" />
-  <a href={link_1}>Home</a>
-  <a href={link_2}>Catalog</a>
+  <a href="">Home</a>
+  <a href="">Catalog</a>
   <div>
     <label class="switch">
       <input type="checkbox" />
@@ -348,12 +348,10 @@ import Popup from "./Popup.astro";
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
 
-  // When the user clicks on the button, open the modal
   btn.onclick = function () {
     modal.style.display = "block";
   };
 
-  // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
     modal.style.display = "none";
   };
